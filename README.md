@@ -31,8 +31,8 @@ Output example:
 Let's assume that the <MODULE_NAME> istance is named `<MODULE_NAME>1`.
 
 Then launch `configure-module`, by setting the following parameters:
-- `<PARAM1_NAME>`: <PARAM1_DESCRIPTION>
-- `<PARAM2_NAME>`: <PARAM2_DESCRIPTION>
+- `<MODULE_PARAM1_NAME>`: <MODULE_PARAM1_DESCRIPTION>
+- `<MODULE_PARAM2_NAME>`: <MODULE_PARAM2_DESCRIPTION>
 - ...
 
 Example:
