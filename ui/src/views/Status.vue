@@ -260,13 +260,11 @@ export default {
     //   this.loading.status = true;
     //   this.error.getStatus = "";
     //   const taskAction = "get-status";
-
     //   // register to task completion
     //   this.ns8Core.$root.$once(
     //     taskAction + "-completed",
     //     this.getStatusCompleted
     //   );
-
     //   const res = await to(
     //     this.createModuleTaskForApp(this.instanceName, {
     //       action: taskAction,
@@ -277,7 +275,6 @@ export default {
     //     })
     //   );
     //   const err = res[0];
-
     //   if (err) {
     //     console.error(`error creating task ${taskAction}`, err);
     //     this.error.getStatus = this.getErrorMessage(err);

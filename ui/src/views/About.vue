@@ -155,7 +155,7 @@
 </template>
 
 <script>
-// import to from "await-to-js";
+import to from "await-to-js";
 import { mapState } from "vuex";
 import {
   QueryParamService,
