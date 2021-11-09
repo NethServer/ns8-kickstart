@@ -10,7 +10,6 @@
         app-side-nav
       "
     >
-      <!-- v-click-outside="clickOutside" //// -->
       <AppSideMenuContent />
     </div>
   </transition>
@@ -25,7 +24,7 @@ export default {
   data() {
     return {
       isMenuShown: false,
-      isClickOutsideEnabled: false, ////
+      isClickOutsideEnabled: false,
     };
   },
   created() {
@@ -35,7 +34,7 @@ export default {
   mounted() {
     // prevent glitch: click-outside is incorrectly detected when mobile side menu appears
     setTimeout(() => {
-      this.isClickOutsideEnabled = true; ////
+      this.isClickOutsideEnabled = true;
     }, 200);
   },
   beforeDestroy() {
@@ -47,8 +46,6 @@ export default {
       this.isMenuShown = !this.isMenuShown;
     },
     clickOutside() {
-      console.log("click outside mobile side menu", this.isMenuShown); //// fix
-
       setTimeout(() => {
         this.isMenuShown = false;
       }, 200);

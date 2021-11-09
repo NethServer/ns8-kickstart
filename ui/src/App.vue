@@ -53,8 +53,5 @@ export default {
 </script>
 
 <style lang="scss">
-//// DO NOT IMPORT CARBON STYLES, THEY OVERRIDE NS8 CORE THEME
-// @import "./styles/carbon";
-
 @import "styles/carbon-utils";
 </style>

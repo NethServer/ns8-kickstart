@@ -5,14 +5,13 @@
         <h2>{{ $t("logs.title") }}</h2>
       </div>
     </div>
-    <!-- //// landscape mode warning needed? -->
     <!-- <div class="bx--row">
       <div class="bx--col-lg-16">
         <NsInlineNotification
           class="landscape-warning"
           kind="warning"
-          :title="$t('common.use_landscape_mode')"
-          :description="$t('common.use_landscape_mode_description')"
+          :title="ns8Core.$t('common.use_landscape_mode')"
+          :description="ns8Core.$t('common.use_landscape_mode_description')"
         />
       </div>
     </div> -->
@@ -49,7 +48,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["appName"]),
+    ...mapState(["appName", "ns8Core"]),
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {

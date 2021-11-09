@@ -1,14 +1,7 @@
-//// when external apps will be on a different repo than core, we'll need to import scss from url,
-//// e.g. @import url(https://...);
-
-// not working when generating container image
-// @import "../../../../core/ui/src/styles/_carbon-utils.scss";
-
 @import "~carbon-components/scss/globals/scss/vendor/@carbon/type/scss/font-family.scss";
 @import "~carbon-components/scss/globals/scss/vendor/@carbon/layout/scss/breakpoint.scss";
 @import "~carbon-components/scss/globals/scss/typography.scss";
 @import "~carbon-components/scss/globals/scss/vars.scss";
-// @import "./branding";
 
 $breakpoint-large: 1056px;
 $breakpoint-medium: 672px;
