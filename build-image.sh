@@ -20,7 +20,7 @@ if ! buildah containers --format "{{.ContainerName}}" | grep -q nodebuilder-<MOD
 fi
 
 echo "Build static UI files with node..."
-buildah run nodebuilder-<MODULE_NAME> sh -c "cd /usr/src/<MODULE_NAME>/ui       && npm install && npm run build"
+buildah run nodebuilder-<MODULE_NAME> sh -c "cd /usr/src/<MODULE_NAME>/ui && yarn install && yarn build"
 
 # Add imageroot directory to the container image
 buildah add "${container}" imageroot /imageroot
