@@ -20,7 +20,7 @@
         <cv-tile :light="true">
           <NsEmptyState :title="$t('common.work_in_progress')">
             <template #pictogram>
-              <Bulldozer />
+              <BulldozerPictogram />
             </template>
           </NsEmptyState>
         </cv-tile>
