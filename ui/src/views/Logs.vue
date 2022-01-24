@@ -10,8 +10,8 @@
         <NsInlineNotification
           class="landscape-warning"
           kind="warning"
-          :title="ns8Core.$t('common.use_landscape_mode')"
-          :description="ns8Core.$t('common.use_landscape_mode_description')"
+          :title="core.$t('common.use_landscape_mode')"
+          :description="core.$t('common.use_landscape_mode_description')"
         />
       </div>
     </div> -->
@@ -48,7 +48,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["appName", "ns8Core"]),
+    ...mapState(["appName", "core"]),
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
