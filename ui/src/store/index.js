@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    appName: "MODULE_NAME", // TODO
+    appName: "kickstart", // TODO
     instanceName: "",
     instanceLabel: "",
     core: null,

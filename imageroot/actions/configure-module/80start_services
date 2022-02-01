@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/bash
 
 #
 # Copyright (C) 2022 Nethesis S.r.l.
@@ -20,10 +20,6 @@
 # along with NethServer.  If not, see COPYING.
 #
 
-import json
-import sys
-import agent
+# If the control reaches this step, the service can be enabled and started
 
-config = {}
-
-json.dump(config, fp=sys.stdout)
+systemctl --user enable --now kickstart.service
