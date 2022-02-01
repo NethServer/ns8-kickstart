@@ -1,59 +1,55 @@
 # ns8-kickstart
 
-This repository is a starting point to create a NethServer 8 module.
+This is a template module for [NethServer 8](https://github.com/NethServer/ns8-core).
+To start a new module from it:
 
-See [NethServer 8 documentation](https://github.com/NethServer/ns8-scratchpad#readme).
+1. Click on [Use this template](https://github.com/NethServer/ns8-kickstart/generate).
+   Name your repo with `ns8-` prefix (e.g. `ns8-mymodule`)
 
-Search and replace all "MODULE_" occurrences in this repository with the proper values of your module.
+1. Search and replace all `kickstart` occurrences in this repository with
+   your module name (e.g. `mymodule`)
 
-A README.md template for your NethServer 8 module is the following:
+1. Rename `imageroot/systemd/user/kickstart.service` to reflect your
+   module name (e.g. `mymodule.service`)
 
-# <MODULE_NAME>
-
-Start and configure <MODULE_NAME> instance.
-The module uses <MODULE_IMAGE>.
+1. Fix this `README.md` file, by replacing this section with your module
+   description.
 
 ## Install
 
-Instantiate the module:
-```
-add-module <MODULE_NAME> 1
-```
+Instantiate the module with:
+
+    add-module ghcr.io/nethserver/kickstart:latest 1
 
 The output of the command will return the instance name.
 Output example:
-```
-{"module_id": "<MODULE_NAME>1", "image_name": "<MODULE_NAME>", "image_url": "<IMAGE_URL>:latest"}
-```
+
+    {"module_id": "kickstart1", "image_name": "kickstart", "image_url": "ghcr.io/nethserver/kickstart:latest"}
 
 ## Configure
 
-Let's assume that the <MODULE_NAME> istance is named `<MODULE_NAME>1`.
+Let's assume that the kickstart instance is named `kickstart1`.
 
-Then launch `configure-module`, by setting the following parameters:
+Launch `configure-module`, by setting the following parameters:
 - `<MODULE_PARAM1_NAME>`: <MODULE_PARAM1_DESCRIPTION>
 - `<MODULE_PARAM2_NAME>`: <MODULE_PARAM2_DESCRIPTION>
 - ...
 
 Example:
-```
-api-cli run configure-module --agent module/<MODULE_NAME>1 --data - <<EOF
-{
-  "<MODULE_PARAM1_NAME>": "MODULE_PARAM1_VALUE",
-  "<MODULE_PARAM2_NAME>": "MODULE_PARAM2_VALUE",
-  ...
-}
-EOF
-```
+
+    api-cli run module/kickstart1/configure-module --data '{}'
 
 The above command will:
-- start and configure the <MODULE_NAME> instance
+- start and configure the kickstart instance
 - (describe configuration process)
 - ...
+
+Send a test HTTP request to the kickstart backend service:
+
+    curl http://127.0.0.1/kickstart/
 
 ## Uninstall
 
 To uninstall the instance:
-```
-remove-module <MODULE_NAME>1 --no-preserve
-```
+
+    remove-module --no-preserve kickstart1
