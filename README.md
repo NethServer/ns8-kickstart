@@ -4,16 +4,18 @@ This is a template module for [NethServer 8](https://github.com/NethServer/ns8-c
 To start a new module from it:
 
 1. Click on [Use this template](https://github.com/NethServer/ns8-kickstart/generate).
-   Name your repo with `ns8-` prefix (e.g. `ns8-mymodule`)
+   Name your repo with `ns8-` prefix (e.g. `ns8-mymodule`). 
+   Do not end your module name with a number, like ~~`ns8-baaad2`~~!
 
-1. Search and replace all `kickstart` occurrences in this repository with
-   your module name (e.g. `mymodule`)
+1. An automated initialization workflow starts: wait for its completion
 
-1. Rename `imageroot/systemd/user/kickstart.service` to reflect your
-   module name (e.g. `mymodule.service`)
+1. Edit this `README.md` file, by replacing this section with your module
+   description
 
-1. Fix this `README.md` file, by replacing this section with your module
-   description.
+1. Pull the initialization commit. It is now possible to remove
+   `.github/workflows/initialize-repo.yml`
+
+1. Commit and push your local changes
 
 ## Install
 
