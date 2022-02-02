@@ -22,6 +22,7 @@ jobs:
           if [[ "${modulename}" != "kickstart" ]]; then
             git mv imageroot/systemd/user/kickstart.service imageroot/systemd/user/${modulename}.service
             sed -i "s/kickstart/${modulename}/g" $(find * -type f)
+            git rm -f .github/workflows/initialize-repo.yml
           fi
           git commit -a -F - <<EOF
           Repository initialization
@@ -31,4 +32,4 @@ jobs:
           - Rename the service unit file
           EOF
           git push origin ${{ github.ref_name }}
-          echo "::notice title=Initialization completed::Now you can remove .github/workflows/initialize-repo.yml"
+          echo "::notice title=Initialization completed::Now you can clone the repository."
