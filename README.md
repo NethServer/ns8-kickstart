@@ -7,13 +7,13 @@ To start a new module from it:
    Name your repo with `ns8-` prefix (e.g. `ns8-mymodule`). 
    Do not end your module name with a number, like ~~`ns8-baaad2`~~!
 
-1. An automated initialization workflow starts: wait for its completion
+1. An automated initialization workflow starts: wait for its completion.
+   You can follow the run inside the "Actions" tab, the workflow is named "Initial commit"
+
+1. You can now clone the repository
 
 1. Edit this `README.md` file, by replacing this section with your module
    description
-
-1. Pull the initialization commit. It is now possible to remove
-   `.github/workflows/initialize-repo.yml`
 
 1. Commit and push your local changes
 
