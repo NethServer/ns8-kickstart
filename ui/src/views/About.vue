@@ -222,7 +222,7 @@ export default {
         this.createClusterTaskForApp({
           action: taskAction,
           data: {
-            id: "kickstart",
+            id: "kickstart", // TODO
           },
           extra: {
             title: this.$t("action." + taskAction),
