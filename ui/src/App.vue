@@ -23,7 +23,7 @@ export default {
     ...mapState(["instanceName", "instanceLabel", "core"]),
   },
   created() {
-    const core = window.parent.ns8;
+    const core = window.parent.core;
     this.setCoreInStore(core);
     const instanceName = /#\/apps\/(\w+)/.exec(window.parent.location.hash)[1];
     this.setInstanceNameInStore(instanceName);
@@ -93,5 +93,8 @@ export default {
 </script>
 
 <style lang="scss">
+//// DO NOT IMPORT CARBON STYLES, THEY OVERRIDE CORE THEME
+// @import "./styles/carbon";
+
 @import "styles/carbon-utils";
 </style>
