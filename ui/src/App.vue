@@ -23,7 +23,7 @@ export default {
     ...mapState(["instanceName", "instanceLabel", "core"]),
   },
   created() {
-    const core = window.parent.ns8;
+    const core = window.parent.core;
     this.setCoreInStore(core);
     const instanceName = /#\/apps\/(\w+)/.exec(window.parent.location.hash)[1];
     this.setInstanceNameInStore(instanceName);
