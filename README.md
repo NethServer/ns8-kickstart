@@ -55,3 +55,12 @@ Send a test HTTP request to the kickstart backend service:
 To uninstall the instance:
 
     remove-module --no-preserve kickstart1
+
+## Testing
+
+Test the module using the `test-module.sh` script:
+
+
+    ./test-module.sh <NODE_ADDR> ghcr.io/nethserver/kickstart:latest
+
+The tests are made using [Robot Framework](https://robotframework.org/)

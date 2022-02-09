@@ -21,6 +21,7 @@ jobs:
           modulename=$(basename ${{ github.repository }} | sed 's/^ns8-//')
           if [[ "${modulename}" != "kickstart" ]]; then
             git mv imageroot/systemd/user/kickstart.service imageroot/systemd/user/${modulename}.service
+            git mv tests/kickstart.robot tests/${modulename}.robot
             sed -i "s/kickstart/${modulename}/g" $(find * -type f)
             git rm -f .github/workflows/initialize-repo.yml
           fi
