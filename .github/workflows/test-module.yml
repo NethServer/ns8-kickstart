@@ -1,0 +1,39 @@
+name: Test module
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Publish images"]
+    types: [completed]
+
+jobs:
+  module:
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == '' }}
+    runs-on: ubuntu-latest
+    outputs:
+      owner: ${{ steps.owner.outputs.name }}
+      tag: ${{ steps.tag.outputs.name }}
+    steps:
+      - id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_run" ]
+          then
+            tag="${{ github.event.workflow_run.head_branch }}"
+          else
+            tag="${{ github.ref_name }}"
+          fi
+          if [ "$tag" = "main" ]
+          then
+            tag="latest"
+          fi
+          echo "::set-output name=name::${tag}"
+      - id: owner
+        run: |
+          owner=$(basename ${{ github.event.organization.url || github.event.repository.owner.url }} |  tr '[:upper:]' '[:lower:]')
+          echo "::set-output name=name::${owner}"
+  run_tests:
+    needs: module
+    uses: NethServer/ns8-github-actions/.github/workflows/test-on-ubuntu-runner.yml@main
+    with:
+      args: "ghcr.io/${{needs.module.outputs.owner}}/kickstart:${{needs.module.outputs.tag}}"
+      repo_ref: ${{ github.event.workflow_run.head_sha || github.sha }}
