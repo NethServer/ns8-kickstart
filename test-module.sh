@@ -22,6 +22,10 @@ podman run -i \
 	-d ~/outputs /home/pwuser/ns8-module/tests/
 EOF
 
+tests_res=$?
+
 podman cp rf-core-runner:/home/pwuser/outputs tests/
 podman stop rf-core-runner
 podman rm rf-core-runner
+
+exit ${tests_res}
