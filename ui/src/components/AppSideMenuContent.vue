@@ -25,13 +25,6 @@
         <span>{{ $t("settings.title") }}</span>
       </cv-side-nav-link>
       <cv-side-nav-link
-        @click="goToPage('logs')"
-        :class="{ 'current-page': isLinkActive('logs') }"
-      >
-        <template v-slot:nav-icon><Catalog20 /></template>
-        <span>{{ $t("logs.title") }}</span>
-      </cv-side-nav-link>
-      <cv-side-nav-link
         @click="goToPage('about')"
         :class="{ 'current-page': isLinkActive('about') }"
       >
