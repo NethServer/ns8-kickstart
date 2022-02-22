@@ -37,7 +37,6 @@
 
 <script>
 import Settings20 from "@carbon/icons-vue/es/settings/20";
-import Catalog20 from "@carbon/icons-vue/es/catalog/20";
 import Information20 from "@carbon/icons-vue/es/information/20";
 import Activity20 from "@carbon/icons-vue/es/activity/20";
 import { mapState } from "vuex";
@@ -46,7 +45,6 @@ import { QueryParamService } from "@nethserver/ns8-ui-lib";
 export default {
   name: "AppSideMenuContent",
   components: {
-    Catalog20,
     Settings20,
     Information20,
     Activity20,
