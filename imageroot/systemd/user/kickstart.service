@@ -16,7 +16,6 @@ ExecStart=/usr/bin/podman run \
     --conmon-pidfile=%t/kickstart.pid \
     --cidfile=%t/kickstart.ctr-id \
     --cgroups=no-conmon \
-    --log-opt=tag=%u \
     --replace --name=%N \
     --publish=127.0.0.1:${TCP_PORT}:8080 \
     ${ECHO_SERVER_IMAGE}
