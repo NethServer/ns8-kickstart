@@ -275,7 +275,6 @@ export default {
 
 .app-logo {
   width: 4rem;
-  height: 4rem;
   margin-right: $spacing-05;
   flex-shrink: 0;
 }
