@@ -14,5 +14,5 @@ jobs:
     needs: module
     uses: NethServer/ns8-github-actions/.github/workflows/test-on-ubuntu-runner.yml@main
     with:
-      args: "ghcr.io/${{needs.module.outputs.owner}}/kickstart:${{needs.module.outputs.tag}}"
+      args: "ghcr.io/${{needs.module.outputs.owner}}/${{needs.module.outputs.name}}:${{needs.module.outputs.tag}}"
       repo_ref: ${{needs.module.outputs.sha}}
