@@ -208,39 +208,10 @@ export default {
     next();
   },
   methods: {
-    async getModuleInfo() {
+    getModuleInfo() {
       this.loading.moduleInfo = true;
-      const taskAction = "get-module-info";
-
-      // register to task completion
-      this.core.$root.$once(
-        taskAction + "-completed",
-        this.getModuleInfoCompleted
-      );
-
-      const res = await to(
-        this.createClusterTaskForApp({
-          action: taskAction,
-          data: {
-            id: "kickstart", // TODO
-          },
-          extra: {
-            title: this.$t("action." + taskAction),
-            isNotificationHidden: true,
-          },
-        })
-      );
-      const err = res[0];
-
-      if (err) {
-        console.error("error retrieving moodule info", err);
-        this.error.moduleInfo = this.getErrorMessage(err);
-        this.loading.moduleInfo = false;
-        return;
-      }
-    },
-    getModuleInfoCompleted(taskContext, taskResult) {
-      this.app = taskResult.output;
+      const metadata = require("../../public/metadata.json");
+      this.app = metadata;
       this.loading.moduleInfo = false;
     },
     getApplicationDescription(app) {
@@ -304,7 +275,6 @@ export default {
 
 .app-logo {
   width: 4rem;
-  height: 4rem;
   margin-right: $spacing-05;
   flex-shrink: 0;
 }
