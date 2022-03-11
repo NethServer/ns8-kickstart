@@ -30,123 +30,111 @@
             />
           </div>
           <div v-else>
-            <section>
-              <div class="logo-and-name">
-                <div class="app-logo">
-                  <img
-                    :src="
-                      app.logo
-                        ? app.logo
-                        : require('@/assets/module_default_logo.png')
-                    "
-                    :alt="app.name + ' logo'"
-                  />
-                </div>
-                <div class="app-name">
-                  <h3>{{ app.name }}</h3>
-                </div>
+            <div class="logo-and-name">
+              <div class="app-logo">
+                <img
+                  :src="
+                    app.logo
+                      ? app.logo
+                      : require('@/assets/module_default_logo.png')
+                  "
+                  :alt="app.name + ' logo'"
+                />
               </div>
-            </section>
+              <div class="app-name">
+                <h3>{{ app.name }}</h3>
+              </div>
+            </div>
             <div class="description">
               {{ getApplicationDescription(app) }}
             </div>
-            <section>
-              <div>
-                <span class="section-title"
-                  >{{ core.$t("software_center.instance") }}:</span
-                >
-                {{ instanceName }}
-              </div>
-            </section>
-            <section>
-              <div>
-                <span class="section-title"
-                  >{{ core.$t("common.version") }}:</span
-                >
-                {{ version }}
-              </div>
-            </section>
-            <section>
-              <div>
-                <span class="section-title"
-                  >{{
-                    core.$tc(
-                      "software_center.categories",
-                      app.categories.length
-                    )
-                  }}:</span
-                >
-                {{ getApplicationCategories(app) }}
-              </div>
-            </section>
-            <section>
-              <div>
-                <span class="section-title"
-                  >{{ core.$t("software_center.documentation") }}:
-                </span>
+            <div class="key-value-setting">
+              <span class="label">{{
+                core.$t("software_center.instance")
+              }}</span>
+              <span class="value">{{ instanceName }}</span>
+            </div>
+            <div class="key-value-setting">
+              <span class="label">{{ core.$t("common.version") }}</span>
+              <span class="value">{{ version }}</span>
+            </div>
+            <div class="key-value-setting">
+              <span class="label">{{
+                core.$tc("software_center.categories", app.categories.length)
+              }}</span>
+              <span class="value">{{ getApplicationCategories(app) }}</span>
+            </div>
+            <div class="key-value-setting">
+              <span class="label">{{
+                core.$t("software_center.documentation")
+              }}</span>
+              <span class="value">
                 <cv-link :href="app.docs.documentation_url" target="_blank">
                   {{ app.docs.documentation_url }}
                 </cv-link>
-              </div>
-            </section>
-            <section>
-              <div>
-                <span class="section-title"
-                  >{{ core.$t("software_center.bugs") }}:
-                </span>
+              </span>
+            </div>
+            <div class="key-value-setting">
+              <span class="label">{{ core.$t("software_center.bugs") }}</span>
+              <span class="value">
                 <cv-link :href="app.docs.bug_url" target="_blank">
                   {{ app.docs.bug_url }}
                 </cv-link>
-              </div>
-            </section>
-            <section>
-              <div>
-                <span class="section-title"
-                  >{{ core.$t("software_center.source_code") }}:
-                </span>
+              </span>
+            </div>
+            <div class="key-value-setting">
+              <span class="label">{{
+                core.$t("software_center.source_code")
+              }}</span>
+              <span class="value">
                 <cv-link :href="app.docs.code_url" target="_blank">
                   {{ app.docs.code_url }}
                 </cv-link>
-              </div>
-            </section>
-            <section>
-              <div>
-                <span class="section-title"
-                  >{{ core.$t("software_center.source_package") }}:
-                </span>
+              </span>
+            </div>
+            <div class="key-value-setting">
+              <span class="label">{{
+                core.$t("software_center.source_package")
+              }}</span>
+              <span class="value">
                 {{ app.source }}
-              </div>
-            </section>
-            <section>
-              <div>
-                <span class="section-title"
-                  >{{
-                    core.$tc("software_center.authors", app.authors.length)
-                  }}:
-                </span>
+              </span>
+            </div>
+            <div class="key-value-setting">
+              <span class="label">{{
+                core.$tc("software_center.authors", app.authors.length)
+              }}</span>
+              <span class="value">
                 <span v-if="app.authors.length == 1"
                   >{{ app.authors[0].name }}
                   <cv-link
+                    v-if="app.authors[0].email"
                     :href="'mailto:' + app.authors[0].email"
                     target="_blank"
+                    class="email"
                   >
                     {{ app.authors[0].email }}
                   </cv-link>
                 </span>
-                <ul v-else>
+                <ul v-else class="authors">
                   <li
                     v-for="(author, index) in app.authors"
                     :key="index"
                     class="author"
                   >
                     {{ author.name }}
-                    <cv-link :href="'mailto:' + author.email" target="_blank">
+                    <cv-link
+                      v-if="author.email"
+                      :href="'mailto:' + author.email"
+                      target="_blank"
+                      class="email"
+                    >
                       {{ author.email }}
                     </cv-link>
                   </li>
                 </ul>
-              </div>
-            </section>
+              </span>
+            </div>
           </div>
         </cv-tile>
       </div>
@@ -255,7 +243,7 @@ export default {
           apps.push(instance);
         }
       }
-      const app = apps.find((el) => (el.id = this.instanceName));
+      const app = apps.find((el) => el.id == this.instanceName);
       this.version = app.version;
       this.loading.version = false;
     },
@@ -274,7 +262,8 @@ export default {
 }
 
 .app-logo {
-  width: 4rem;
+  max-width: 4rem;
+  max-height: 4rem;
   margin-right: $spacing-05;
   flex-shrink: 0;
 }
@@ -298,5 +287,14 @@ section {
 
 .author {
   margin-left: $spacing-05;
+  margin-bottom: $spacing-02;
+}
+
+.authors {
+  margin-top: $spacing-02;
+}
+
+.email {
+  margin-left: $spacing-02;
 }
 </style>
