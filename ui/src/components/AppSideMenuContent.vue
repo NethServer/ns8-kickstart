@@ -11,21 +11,21 @@
 
     <cv-side-nav-items>
       <cv-side-nav-link
-        @click="goToPage('status')"
+        @click="goToAppPage(instanceName, 'status')"
         :class="{ 'current-page': isLinkActive('status') }"
       >
         <template v-slot:nav-icon><Activity20 /></template>
         <span>{{ $t("status.title") }}</span>
       </cv-side-nav-link>
       <cv-side-nav-link
-        @click="goToPage('settings')"
+        @click="goToAppPage(instanceName, 'settings')"
         :class="{ 'current-page': isLinkActive('settings') }"
       >
         <template v-slot:nav-icon><Settings20 /></template>
         <span>{{ $t("settings.title") }}</span>
       </cv-side-nav-link>
       <cv-side-nav-link
-        @click="goToPage('about')"
+        @click="goToAppPage(instanceName, 'about')"
         :class="{ 'current-page': isLinkActive('about') }"
       >
         <template v-slot:nav-icon><Information20 /></template>
@@ -40,7 +40,7 @@ import Settings20 from "@carbon/icons-vue/es/settings/20";
 import Information20 from "@carbon/icons-vue/es/information/20";
 import Activity20 from "@carbon/icons-vue/es/activity/20";
 import { mapState } from "vuex";
-import { QueryParamService } from "@nethserver/ns8-ui-lib";
+import { QueryParamService, UtilService } from "@nethserver/ns8-ui-lib";
 
 export default {
   name: "AppSideMenuContent",
@@ -49,7 +49,7 @@ export default {
     Information20,
     Activity20,
   },
-  mixins: [QueryParamService],
+  mixins: [QueryParamService, UtilService],
   data() {
     return {
       instanceNameSkeletonWidth: "70%",
@@ -69,19 +69,6 @@ export default {
   methods: {
     isLinkActive(page) {
       return this.getPage() === page;
-    },
-    goToPath(path) {
-      if (this.core.$route.fullPath != path) {
-        this.core.$router.push(path);
-      }
-      this.$forceUpdate();
-    },
-    goToPage(page) {
-      const path = `/apps/${this.instanceName}?page=${page}`;
-
-      if (this.core.$route.fullPath != path) {
-        this.core.$router.push(path);
-      }
     },
     onAppNavigation() {
       // highlight current page in side menu
