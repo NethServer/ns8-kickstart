@@ -232,7 +232,7 @@ export default {
         this.createClusterTaskForApp({
           action: taskAction,
           extra: {
-            title: this.core.$t("action." + taskAction),
+            title: this.$t("action." + taskAction),
             isNotificationHidden: true,
             eventId,
           },
@@ -249,7 +249,7 @@ export default {
     },
     listInstalledModulesAborted(taskResult, taskContext) {
       console.error(`${taskContext.action} aborted`, taskResult);
-      this.error.version = this.core.$t("error.generic_error");
+      this.error.version = this.$t("error.generic_error");
       this.loading.version = false;
     },
     listInstalledModulesCompleted(taskContext, taskResult) {

@@ -39,7 +39,8 @@
     "get-module-info": "Get module info",
     "get-name": "Get name",
     "list-backup-repositories": "List backup repositories",
-    "list-backups": "List backups"
+    "list-backups": "List backups",
+    "list-installed-modules": "List installed modules"
   },
   "error": {
     "error": "Error",

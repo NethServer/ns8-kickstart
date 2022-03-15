@@ -142,7 +142,7 @@ export default {
     },
     getConfigurationAborted(taskResult, taskContext) {
       console.error(`${taskContext.action} aborted`, taskResult);
-      this.error.getConfiguration = this.core.$t("error.generic_error");
+      this.error.getConfiguration = this.$t("error.generic_error");
       this.loading.getConfiguration = false;
     },
     getConfigurationCompleted(taskContext, taskResult) {
@@ -238,7 +238,7 @@ export default {
     },
     configureModuleAborted(taskResult, taskContext) {
       console.error(`${taskContext.action} aborted`, taskResult);
-      this.error.configureModule = this.core.$t("error.generic_error");
+      this.error.configureModule = this.$t("error.generic_error");
       this.loading.configureModule = false;
     },
     configureModuleCompleted() {

@@ -375,7 +375,7 @@ export default {
     },
     getStatusAborted(taskResult, taskContext) {
       console.error(`${taskContext.action} aborted`, taskResult);
-      this.error.getStatus = this.core.$t("error.generic_error");
+      this.error.getStatus = this.$t("error.generic_error");
       this.loading.getStatus = false;
     },
     getStatusCompleted(taskContext, taskResult) {
@@ -404,7 +404,7 @@ export default {
         this.createClusterTaskForApp({
           action: taskAction,
           extra: {
-            title: this.core.$t("action." + taskAction),
+            title: this.$t("action." + taskAction),
             isNotificationHidden: true,
             eventId,
           },
@@ -421,7 +421,7 @@ export default {
     },
     listBackupRepositoriesAborted(taskResult, taskContext) {
       console.error(`${taskContext.action} aborted`, taskResult);
-      this.error.listBackupRepositories = this.core.$t("error.generic_error");
+      this.error.listBackupRepositories = this.$t("error.generic_error");
       this.loading.listBackupRepositories = false;
     },
     listBackupRepositoriesCompleted(taskContext, taskResult) {
@@ -454,7 +454,7 @@ export default {
         this.createClusterTaskForApp({
           action: taskAction,
           extra: {
-            title: this.core.$t("action." + taskAction),
+            title: this.$t("action." + taskAction),
             isNotificationHidden: true,
             eventId,
           },
@@ -471,7 +471,7 @@ export default {
     },
     listBackupsAborted(taskResult, taskContext) {
       console.error(`${taskContext.action} aborted`, taskResult);
-      this.error.listBackups = this.core.$t("error.generic_error");
+      this.error.listBackups = this.$t("error.generic_error");
       this.loading.listBackups = false;
     },
     listBackupsCompleted(taskContext, taskResult) {
