@@ -107,18 +107,17 @@ export default {
       this.loading.getConfiguration = true;
       this.error.getConfiguration = "";
       const taskAction = "get-configuration";
+      const eventId = this.getUuid();
 
       // register to task error
-      this.core.$root.$off(taskAction + "-aborted");
       this.core.$root.$once(
-        taskAction + "-aborted",
+        `${taskAction}-aborted-${eventId}`,
         this.getConfigurationAborted
       );
 
       // register to task completion
-      this.core.$root.$off(taskAction + "-completed");
       this.core.$root.$once(
-        taskAction + "-completed",
+        `${taskAction}-completed-${eventId}`,
         this.getConfigurationCompleted
       );
 
@@ -128,6 +127,7 @@ export default {
           extra: {
             title: this.$t("action." + taskAction),
             isNotificationHidden: true,
+            eventId,
           },
         })
       );
@@ -192,25 +192,23 @@ export default {
 
       this.loading.configureModule = true;
       const taskAction = "configure-module";
+      const eventId = this.getUuid();
 
       // register to task error
-      this.core.$root.$off(taskAction + "-aborted");
       this.core.$root.$once(
-        taskAction + "-aborted",
+        `${taskAction}-aborted-${eventId}`,
         this.configureModuleAborted
       );
 
       // register to task validation
-      this.core.$root.$off(taskAction + "-validation-failed");
       this.core.$root.$once(
-        taskAction + "-validation-failed",
+        `${taskAction}-validation-failed-${eventId}`,
         this.configureModuleValidationFailed
       );
 
       // register to task completion
-      this.core.$root.$off(taskAction + "-completed");
       this.core.$root.$once(
-        taskAction + "-completed",
+        `${taskAction}-completed-${eventId}`,
         this.configureModuleCompleted
       );
 
@@ -225,6 +223,7 @@ export default {
               instance: this.instanceName,
             }),
             description: this.$t("common.processing"),
+            eventId,
           },
         })
       );

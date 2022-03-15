@@ -15,11 +15,31 @@
         />
       </cv-column>
     </cv-row>
+    <cv-row v-if="error.listBackupRepositories">
+      <cv-column>
+        <NsInlineNotification
+          kind="error"
+          :title="$t('action.list-backup-repositories')"
+          :description="error.listBackupRepositories"
+          :showCloseButton="false"
+        />
+      </cv-column>
+    </cv-row>
+    <cv-row v-if="error.listBackups">
+      <cv-column>
+        <NsInlineNotification
+          kind="error"
+          :title="$t('action.list-backups')"
+          :description="error.listBackups"
+          :showCloseButton="false"
+        />
+      </cv-column>
+    </cv-row>
     <cv-row>
       <cv-column :md="4" :max="4">
         <NsInfoCard
           light
-          :title="status ? status.instance : ''"
+          :title="status.instance || '-'"
           :description="$t('status.app_instance')"
           :icon="Application32"
           :loading="loading.getStatus"
@@ -66,7 +86,9 @@
         <NsSystemLogsCard
           :title="core.$t('system_logs.card_title')"
           :description="
-            core.$t('system_logs.card_description', { name: instanceName })
+            core.$t('system_logs.card_description', {
+              name: instanceLabel || instanceName,
+            })
           "
           :buttonLabel="core.$t('system_logs.card_button_label')"
           :router="core.$router"
@@ -232,11 +254,12 @@ import {
   QueryParamService,
   TaskService,
   IconService,
+  UtilService,
 } from "@nethserver/ns8-ui-lib";
 
 export default {
   name: "Status",
-  mixins: [TaskService, QueryParamService, IconService],
+  mixins: [TaskService, QueryParamService, IconService, UtilService],
   pageTitle() {
     return this.$t("status.title") + " - " + this.appName;
   },
@@ -248,7 +271,12 @@ export default {
       urlCheckInterval: null,
       isRedirectChecked: false,
       redirectTimeout: 0,
-      status: null,
+      status: {
+        instance: "",
+        services: [],
+        images: [],
+        volumes: [],
+      },
       backupRepositories: [],
       backups: [],
       loading: {
@@ -273,7 +301,7 @@ export default {
           return this.$t("status.node") + " " + this.status.node;
         }
       } else {
-        return "";
+        return "-";
       }
     },
     installationNodeTitleTooltip() {
@@ -312,20 +340,27 @@ export default {
       this.loading.getStatus = true;
       this.error.getStatus = "";
       const taskAction = "get-status";
+      const eventId = this.getUuid();
 
       // register to task error
-      this.core.$root.$off(taskAction + "-aborted");
-      this.core.$root.$once(taskAction + "-aborted", this.getStatusAborted);
+      this.core.$root.$once(
+        `${taskAction}-aborted-${eventId}`,
+        this.getStatusAborted
+      );
 
       // register to task completion
-      this.core.$root.$off(taskAction + "-completed");
-      this.core.$root.$once(taskAction + "-completed", this.getStatusCompleted);
+      this.core.$root.$once(
+        `${taskAction}-completed-${eventId}`,
+        this.getStatusCompleted
+      );
+
       const res = await to(
         this.createModuleTaskForApp(this.instanceName, {
           action: taskAction,
           extra: {
             title: this.$t("action." + taskAction),
             isNotificationHidden: true,
+            eventId,
           },
         })
       );
@@ -340,7 +375,7 @@ export default {
     },
     getStatusAborted(taskResult, taskContext) {
       console.error(`${taskContext.action} aborted`, taskResult);
-      this.error.getClusterStatus = this.core.$t("error.generic_error");
+      this.error.getStatus = this.core.$t("error.generic_error");
       this.loading.getStatus = false;
     },
     getStatusCompleted(taskContext, taskResult) {
@@ -351,18 +386,17 @@ export default {
       this.loading.listBackupRepositories = true;
       this.error.listBackupRepositories = "";
       const taskAction = "list-backup-repositories";
+      const eventId = this.getUuid();
 
       // register to task error
-      this.core.$root.$off(taskAction + "-aborted");
       this.core.$root.$once(
-        taskAction + "-aborted",
+        `${taskAction}-aborted-${eventId}`,
         this.listBackupRepositoriesAborted
       );
 
       // register to task completion
-      this.core.$root.$off(taskAction + "-completed");
       this.core.$root.$once(
-        taskAction + "-completed",
+        `${taskAction}-completed-${eventId}`,
         this.listBackupRepositoriesCompleted
       );
 
@@ -372,6 +406,7 @@ export default {
           extra: {
             title: this.core.$t("action." + taskAction),
             isNotificationHidden: true,
+            eventId,
           },
         })
       );
@@ -380,6 +415,7 @@ export default {
       if (err) {
         console.error(`error creating task ${taskAction}`, err);
         this.error.listBackupRepositories = this.getErrorMessage(err);
+        this.loading.listBackupRepositories = false;
         return;
       }
     },
@@ -400,15 +436,17 @@ export default {
       this.loading.listBackups = true;
       this.error.listBackups = "";
       const taskAction = "list-backups";
+      const eventId = this.getUuid();
 
       // register to task error
-      this.core.$root.$off(taskAction + "-aborted");
-      this.core.$root.$once(taskAction + "-aborted", this.listBackupsAborted);
+      this.core.$root.$once(
+        `${taskAction}-aborted-${eventId}`,
+        this.listBackupsAborted
+      );
 
       // register to task completion
-      this.core.$root.$off(taskAction + "-completed");
       this.core.$root.$once(
-        taskAction + "-completed",
+        `${taskAction}-completed-${eventId}`,
         this.listBackupsCompleted
       );
 
@@ -418,6 +456,7 @@ export default {
           extra: {
             title: this.core.$t("action." + taskAction),
             isNotificationHidden: true,
+            eventId,
           },
         })
       );
@@ -426,6 +465,7 @@ export default {
       if (err) {
         console.error(`error creating task ${taskAction}`, err);
         this.error.listBackups = this.getErrorMessage(err);
+        this.loading.listBackups = false;
         return;
       }
     },
