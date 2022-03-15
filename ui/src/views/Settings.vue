@@ -1,9 +1,9 @@
 <template>
   <cv-grid fullWidth>
     <cv-row>
-      <div class="bx--col-lg-16 page-title">
+      <cv-column class="page-title">
         <h2>{{ $t("settings.title") }}</h2>
-      </div>
+      </cv-column>
     </cv-row>
     <cv-row v-if="error.getConfiguration">
       <cv-column>

@@ -1,12 +1,12 @@
 <template>
-  <div class="bx--grid bx--grid--full-width">
-    <div class="bx--row">
-      <div class="bx--col-lg-16 page-title">
+  <cv-grid fullWidth>
+    <cv-row>
+      <cv-column class="page-title">
         <h2>{{ $t("about.title") }}</h2>
-      </div>
-    </div>
-    <div class="bx--row">
-      <div class="bx--col">
+      </cv-column>
+    </cv-row>
+    <cv-row>
+      <cv-column>
         <NsInlineNotification
           v-if="error.version"
           kind="error"
@@ -14,10 +14,10 @@
           :description="error.version"
           :showCloseButton="false"
         />
-      </div>
-    </div>
-    <div class="bx--row">
-      <div class="bx--col-lg-16">
+      </cv-column>
+    </cv-row>
+    <cv-row>
+      <cv-column>
         <cv-tile :light="true">
           <cv-skeleton-text
             v-if="loading.moduleInfo"
@@ -141,9 +141,9 @@
             </div>
           </div>
         </cv-tile>
-      </div>
-    </div>
-  </div>
+      </cv-column>
+    </cv-row>
+  </cv-grid>
 </template>
 
 <script>
