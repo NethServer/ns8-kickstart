@@ -1,20 +1,24 @@
 <template>
-  <div class="bx--grid bx--grid--full-width">
-    <div class="bx--row">
-      <div class="bx--col-lg-16 page-title">
+  <cv-grid fullWidth>
+    <cv-row>
+      <cv-column class="page-title">
         <h2>{{ $t("about.title") }}</h2>
-      </div>
-    </div>
-    <div class="bx--row">
-      <div class="bx--col-lg-16">
+      </cv-column>
+    </cv-row>
+    <cv-row>
+      <cv-column>
+        <NsInlineNotification
+          v-if="error.version"
+          kind="error"
+          :title="$t('error.cannot_retrieve_installed_modules')"
+          :description="error.version"
+          :showCloseButton="false"
+        />
+      </cv-column>
+    </cv-row>
+    <cv-row>
+      <cv-column>
         <cv-tile :light="true">
-          <NsInlineNotification
-            v-if="error.version"
-            kind="error"
-            :title="$t('error.cannot_retrieve_installed_modules')"
-            :description="error.version"
-            :showCloseButton="false"
-          />
           <cv-skeleton-text
             v-if="loading.moduleInfo"
             :paragraph="true"
@@ -137,9 +141,9 @@
             </div>
           </div>
         </cv-tile>
-      </div>
-    </div>
-  </div>
+      </cv-column>
+    </cv-row>
+  </cv-grid>
 </template>
 
 <script>
@@ -206,14 +210,21 @@ export default {
       return this.getAppDescription(app, this.core);
     },
     getApplicationCategories(app) {
-      return this.getAppCategories(app, this.core);
+      return this.getAppCategories(app, this.core) || "-";
     },
     async listInstalledModules() {
       const taskAction = "list-installed-modules";
+      const eventId = this.getUuid();
+
+      // register to task error
+      this.core.$root.$once(
+        `${taskAction}-aborted-${eventId}`,
+        this.listInstalledModulesAborted
+      );
 
       // register to task completion
       this.core.$root.$once(
-        taskAction + "-completed",
+        `${taskAction}-completed-${eventId}`,
         this.listInstalledModulesCompleted
       );
 
@@ -221,19 +232,25 @@ export default {
         this.createClusterTaskForApp({
           action: taskAction,
           extra: {
-            title: this.core.$t("action." + taskAction),
+            title: this.$t("action." + taskAction),
             isNotificationHidden: true,
+            eventId,
           },
         })
       );
-      const errApps = res[0];
+      const err = res[0];
 
-      if (errApps) {
-        console.error("error retrieving installed apps", errApps);
-        this.error.version = this.getErrorMessage(errApps);
+      if (err) {
+        console.error(`error creating task ${taskAction}`, err);
+        this.error.version = this.getErrorMessage(err);
         this.loading.version = false;
         return;
       }
+    },
+    listInstalledModulesAborted(taskResult, taskContext) {
+      console.error(`${taskContext.action} aborted`, taskResult);
+      this.error.version = this.$t("error.generic_error");
+      this.loading.version = false;
     },
     listInstalledModulesCompleted(taskContext, taskResult) {
       let apps = [];
