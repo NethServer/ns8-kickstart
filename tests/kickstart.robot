@@ -15,7 +15,7 @@ Check if kickstart can be configured
     Should Be Equal As Integers    ${rc}  0
 
 Check if kickstart works as expected
-    ${rc} =    Execute Command    sleep 10 && curl -f http://127.0.0.1/kickstart/
+    ${rc} =    Execute Command    curl -f http://127.0.0.1/kickstart/
     ...    return_rc=True  return_stdout=False
     Should Be Equal As Integers    ${rc}  0
 
