@@ -34,6 +34,7 @@ export default {
     )[1];
     this.setInstanceNameInStore(instanceName);
     this.getInstanceLabel();
+    this.setAppName();
 
     // listen to change route events
     const context = this;
@@ -61,6 +62,7 @@ export default {
       "setInstanceNameInStore",
       "setInstanceLabelInStore",
       "setCoreInStore",
+      "setAppNameInStore",
     ]),
     async getInstanceLabel() {
       const taskAction = "get-name";
@@ -104,6 +106,11 @@ export default {
     },
     getInstanceLabelCompleted(taskContext, taskResult) {
       this.setInstanceLabelInStore(taskResult.output.name);
+    },
+    setAppName() {
+      const metadata = require("../public/metadata.json");
+      const appName = metadata.name;
+      this.setAppNameInStore(appName);
     },
   },
 };
