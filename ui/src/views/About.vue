@@ -153,12 +153,13 @@ import {
   QueryParamService,
   TaskService,
   UtilService,
+  PageTitleService,
 } from "@nethserver/ns8-ui-lib";
 
 export default {
   name: "About",
   components: {},
-  mixins: [TaskService, QueryParamService, UtilService],
+  mixins: [TaskService, QueryParamService, UtilService, PageTitleService],
   pageTitle() {
     return this.$t("about.title") + " - " + this.appName;
   },

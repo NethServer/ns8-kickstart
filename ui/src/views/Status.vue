@@ -255,11 +255,18 @@ import {
   TaskService,
   IconService,
   UtilService,
+  PageTitleService,
 } from "@nethserver/ns8-ui-lib";
 
 export default {
   name: "Status",
-  mixins: [TaskService, QueryParamService, IconService, UtilService],
+  mixins: [
+    TaskService,
+    QueryParamService,
+    IconService,
+    UtilService,
+    PageTitleService,
+  ],
   pageTitle() {
     return this.$t("status.title") + " - " + this.appName;
   },

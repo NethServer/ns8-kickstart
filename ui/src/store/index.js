@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    appName: "kickstart", // TODO
+    appName: "",
     instanceName: "",
     instanceLabel: "",
     core: null,
@@ -20,6 +20,9 @@ export default new Vuex.Store({
     setCore(state, core) {
       state.core = core;
     },
+    setAppName(state, appName) {
+      state.appName = appName;
+    },
   },
   actions: {
     setInstanceNameInStore(context, instanceName) {
@@ -30,6 +33,9 @@ export default new Vuex.Store({
     },
     setCoreInStore(context, core) {
       context.commit("setCore", core);
+    },
+    setAppNameInStore(context, appName) {
+      context.commit("setAppName", appName);
     },
   },
   modules: {},
