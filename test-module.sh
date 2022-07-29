@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#
+# Copyright (C) 2022 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
 LEADER_NODE=$1
 IMAGE_URL=$2
 SSH_KEYFILE=${SSH_KEYFILE:-$HOME/.ssh/id_rsa}
