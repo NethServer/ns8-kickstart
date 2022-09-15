@@ -25,9 +25,9 @@
           <cv-form @submit.prevent="configureModule">
             <!-- TODO remove test field and code configuration fields -->
             <cv-text-input
-              :label="$t('settings.test_filed')"
+              :label="$t('settings.test_field')"
               v-model="testField"
-              :placeholder="$t('settings.test_filed')"
+              :placeholder="$t('settings.test_field')"
               :disabled="loading.getConfiguration || loading.configureModule"
               :invalid-message="error.testField"
               ref="testField"
