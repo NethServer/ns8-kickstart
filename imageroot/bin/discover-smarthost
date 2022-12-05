@@ -15,20 +15,20 @@ rdb = agent.redis_connect(host='127.0.0.1')
 smtp_settings = agent.get_smarthost_settings(rdb)
 
 # Build a nice variables prefix, with the image name:
-prefix = agent.get_image_name_from_url(os.environ['IMAGE_URL']).toupper() + '_SMTP_'
+prefix = agent.get_image_name_from_url(os.environ['IMAGE_URL']).upper() + '_SMTP_'
 envfile = "smarthost.env"
 
 # Using .tmp suffix: do not overwrite the target file until the new one is
 # saved to disk:
 with open(envfile + ".tmp", "w") as efp:
     # TODO: adjust variable names as wanted
-    print(prefix, "ENABLED=", '1' if smtp_settings['enabled'], file=efp)
-    print(prefix, "HOST=", smtp_settings['host'], file=efp)
-    print(prefix, "PORT=", smtp_settings['port'], file=efp)
-    print(prefix, "USERNAME=", smtp_settings['username'], file=efp)
-    print(prefix, "PASSWORD=", smtp_settings['password'], file=efp)
-    print(prefix, "ENCRYPTION=", smtp_settings['encrypt_smtp'], file=efp)
-    print(prefix, "TLSVERIFY=", smtp_settings['tls_verify'], file=efp)
+    print(f"{prefix}ENABLED={'1' if smtp_settings['enabled'] else ''}", file=efp)
+    print(f"{prefix}HOST={smtp_settings['host']}", file=efp)
+    print(f"{prefix}PORT={smtp_settings['port']}", file=efp)
+    print(f"{prefix}USERNAME={smtp_settings['username']}", file=efp)
+    print(f"{prefix}PASSWORD={smtp_settings['password']}", file=efp)
+    print(f"{prefix}ENCRYPTION={smtp_settings['encrypt_smtp']}", file=efp)
+    print(f"{prefix}TLSVERIFY={'1' if smtp_settings['tls_verify'] else ''}", file=efp)
 
 # Commit changes by replacing the existing envfile:
 os.replace(envfile + ".tmp", envfile)
