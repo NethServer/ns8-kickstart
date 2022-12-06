@@ -50,6 +50,25 @@ Send a test HTTP request to the kickstart backend service:
 
     curl http://127.0.0.1/kickstart/
 
+## Smarthost setting discovery
+
+Some configuration settings, like the smarthost setup, are not part of the
+`configure-module` action input: they are discovered by looking at some
+Redis keys.  To ensure the module is always up-to-date with the
+centralized [smarthost
+setup](https://nethserver.github.io/ns8-core/core/smarthost/) every time
+kickstart starts, the command `bin/discover-smarthost` runs and refreshes
+the `state/smarthost.env` file with fresh values from Redis.
+
+Furthermore if smarthost setup is changed when kickstart is already
+running, the event handler `events/smarthost-changed/10reload_services`
+restarts the main module service.
+
+See also the `systemd/user/kickstart.service` file.
+
+This setting discovery is just an example to understand how the module is
+expected to work: it can be rewritten or discarded completely.
+
 ## Uninstall
 
 To uninstall the instance:
