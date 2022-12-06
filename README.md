@@ -52,13 +52,13 @@ Send a test HTTP request to the kickstart backend service:
 
 ## Smarthost setting discovery
 
-Some configuration settings, like the smarthost setup, cannot be obtained
-by the `configure-module` action: they are discovered by looking to some
+Some configuration settings, like the smarthost setup, are not part of the
+`configure-module` action input: they are discovered by looking at some
 Redis keys.  To ensure the module is always up-to-date with the
 centralized [smarthost
-setup](https://nethserver.github.io/ns8-core/core/smarthost/), every time
-kickstart starts the command `bin/discover-smarthost` runs and refreshes the
-`state/smarthost.env` contents.
+setup](https://nethserver.github.io/ns8-core/core/smarthost/) every time
+kickstart starts, the command `bin/discover-smarthost` runs and refreshes
+the `state/smarthost.env` file with fresh values from Redis.
 
 Furthermore if smarthost setup is changed when kickstart is already
 running, the event handler `events/smarthost-changed/10reload_services`
