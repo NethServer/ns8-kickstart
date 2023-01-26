@@ -15,6 +15,10 @@ To start a new module from it:
 1. Edit this `README.md` file, by replacing this section with your module
    description
 
+1. Adjust `.github/workflows` to your needs. `clean-registry.yml` might
+   need the proper list of image names to work correctly. Unused workflows
+   can be disabled from the GitHub Actions interface.
+
 1. Commit and push your local changes
 
 ## Install
