@@ -95,5 +95,4 @@ Translated with [Weblate](https://hosted.weblate.org/projects/ns8/).
 To setup the translation process:
 
 - add [GitHub Weblate app](https://docs.weblate.org/en/latest/admin/continuous.html#github-setup) to your repository
-- setup the repo webhook Payload URL to `https://hosted.weblate.org/hooks/github/`
 - add your repository to [hosted.weblate.org]((https://hosted.weblate.org) or ask a NethServer developer to add it to ns8 Weblate project
