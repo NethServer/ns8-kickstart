@@ -1,6 +1,7 @@
 {
     "common": {
-        "required": "Obbligatorio"
+        "required": "Obbligatorio",
+        "processing": "Elaborazione in corso..."
     },
     "status": {
         "node": "Nodo",
@@ -30,7 +31,14 @@
         "cannot_retrieve_module_info": "Impossibile recuperare info modulo"
     },
     "action": {
-        "configure-module": "Configura modulo"
+        "configure-module": "Configura modulo",
+        "get-configuration": "Visualizza configurazione",
+        "get-status": "Visualizza stato",
+        "get-module-info": "Visualizza info modulo",
+        "get-name": "Visualizza nome",
+        "list-backup-repositories": "Elenca repository di backup",
+        "list-backups": "Elenca backup",
+        "list-installed-modules": "Elenca moduli installati"
     },
     "task": {
         "cannot_create_task": "Impossibile eseguire task [action]"
