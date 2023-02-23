@@ -1,1 +1,30 @@
-{}
+{
+    "common": {
+        "required": "Obbligatorio"
+    },
+    "status": {
+        "node": "Nodo",
+        "services": "Servizio | Servizi",
+        "no_volumes": "Nessun volume",
+        "title": "Stato",
+        "name": "Nome",
+        "size": "Dimensione",
+        "created": "Creato",
+        "no_services": "Nessun servizio",
+        "no_images": "Nessuna immagine"
+    },
+    "settings": {
+        "save": "Salva",
+        "title": "Impostazioni",
+        "configure_instance": "Configura {instance}"
+    },
+    "error": {
+        "error": "Errore",
+        "404": "Risorsa non trovata",
+        "validation_error": "Errore di validazione",
+        "network_error": "Errore di rete"
+    },
+    "action": {
+        "configure-module": "Configura modulo"
+    }
+}
