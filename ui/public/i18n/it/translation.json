@@ -1,7 +1,8 @@
 {
     "common": {
         "required": "Obbligatorio",
-        "processing": "Elaborazione in corso..."
+        "processing": "Elaborazione in corso...",
+        "work_in_progress": "In lavorazione"
     },
     "status": {
         "node": "Nodo",
@@ -15,12 +16,15 @@
         "no_images": "Nessuna immagine",
         "app_images": "Immagine app|Immagini app",
         "app_instance": "Istanza app",
-        "app_volumes": "Volume app|Volumi app"
+        "app_volumes": "Volume app|Volumi app",
+        "installation_node": "Nodo",
+        "mount": "Percorso di mount"
     },
     "settings": {
         "save": "Salva",
         "title": "Impostazioni",
-        "configure_instance": "Configura {instance}"
+        "configure_instance": "Configura {instance}",
+        "test_field": "Campo di test"
     },
     "error": {
         "error": "Errore",
