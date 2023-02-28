@@ -13,7 +13,6 @@ Description=kickstart server
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
 EnvironmentFile=%S/state/environment
-EnvironmentFile=-%S/state/smarthost.env
 WorkingDirectory=%S/state
 Restart=always
 ExecStartPre=/bin/rm -f %t/kickstart.pid %t/kickstart.ctr-id
@@ -25,6 +24,7 @@ ExecStart=/usr/bin/podman run \
     --cgroups=no-conmon \
     --replace --name=%N \
     --publish=127.0.0.1:${TCP_PORT}:8080 \
+    --env-file=smarthost.env
     ${ECHO_SERVER_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/kickstart.ctr-id -t 10
 ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/kickstart.ctr-id
