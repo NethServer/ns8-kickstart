@@ -24,7 +24,7 @@ ExecStart=/usr/bin/podman run \
     --cgroups=no-conmon \
     --replace --name=%N \
     --publish=127.0.0.1:${TCP_PORT}:8080 \
-    --env-file=%S/state/smarthost.env
+    --env-file=smarthost.env
     ${ECHO_SERVER_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/kickstart.ctr-id -t 10
 ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/kickstart.ctr-id
