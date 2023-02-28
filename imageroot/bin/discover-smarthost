@@ -18,6 +18,10 @@ smtp_settings = agent.get_smarthost_settings(rdb)
 prefix = agent.get_image_name_from_url(os.environ['IMAGE_URL']).upper() + '_SMTP_'
 envfile = "smarthost.env"
 
+# Do not write the env file if smarthost is not configured
+if not smtp_settings['host']:
+    sys.exit(0)
+
 # Using .tmp suffix: do not overwrite the target file until the new one is
 # saved to disk:
 with open(envfile + ".tmp", "w") as efp:
