@@ -11,7 +11,7 @@ import os
 
 # Connect the local Redis replica. This is necessary to consistently start
 # the service if the leader node is not reachable:
-rdb = agent.redis_connect(host='127.0.0.1')
+rdb = agent.redis_connect(use_replica=True)
 smtp_settings = agent.get_smarthost_settings(rdb)
 
 # Build a nice variables prefix, with the image name:
