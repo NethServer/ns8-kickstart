@@ -64,7 +64,15 @@
             </div>
             <div class="key-value-setting">
               <span class="label">{{ core.$t("common.version") }}</span>
-              <span class="value">{{ version }}</span>
+              <span class="value">
+                <cv-skeleton-text
+                  v-if="loading.version"
+                  class="version-skeleton"
+                ></cv-skeleton-text>
+                <span v-else>
+                  {{ version }}
+                </span>
+              </span>
             </div>
             <div class="key-value-setting">
               <span class="label">{{
@@ -174,7 +182,7 @@ export default {
       },
       urlCheckInterval: null,
       app: null,
-      version: "-",
+      version: "",
       error: {
         moduleInfo: "",
         version: "",
@@ -318,5 +326,23 @@ section {
 
 .email {
   margin-left: $spacing-02;
+}
+
+.version-skeleton {
+  display: inline-flex;
+  width: 3rem !important;
+  position: relative;
+  top: 1px;
+}
+</style>
+
+<style lang="scss">
+@import "../styles/carbon-utils";
+
+// global styles
+
+.version-skeleton .bx--skeleton__text {
+  margin-bottom: 0;
+  height: 12px;
 }
 </style>
