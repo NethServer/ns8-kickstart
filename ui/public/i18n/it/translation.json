@@ -46,7 +46,7 @@
         "get-name": "Visualizza nome",
         "list-backup-repositories": "Elenca repository di backup",
         "list-backups": "Elenca backup",
-        "list-installed-modules": "Elenca moduli installati"
+        "list-installed-modules": "Elenco moduli installati"
     },
     "task": {
         "cannot_create_task": "Impossibile eseguire task {action}"
