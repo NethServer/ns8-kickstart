@@ -10,7 +10,7 @@ To start a new module from it:
 1. Clone the repository, enter the cloned directory and
    [configure your GIT identity](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup#_your_identity)
 
-1. Rename some refereneces inside the repo:
+1. Rename some references inside the repo:
    ```
    modulename=$(basename $(pwd) | sed 's/^ns8-//')
    git mv imageroot/systemd/user/kickstart.service imageroot/systemd/user/${modulename}.service
