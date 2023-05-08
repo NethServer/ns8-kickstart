@@ -7,10 +7,17 @@ To start a new module from it:
    Name your repo with `ns8-` prefix (e.g. `ns8-mymodule`). 
    Do not end your module name with a number, like ~~`ns8-baaad2`~~!
 
-1. An automated initialization workflow starts: wait for its completion.
-   You can follow the run inside the "Actions" tab, the workflow is named "Initial commit"
+1. Clone the repository, enter the cloned directory and
+   [configure your GIT identity](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup#_your_identity)
 
-1. You can now clone the repository
+1. Rename some refereneces inside the repo:
+   ```
+   modulename=$(basename $(pwd) | sed 's/^ns8-//')
+   git mv imageroot/systemd/user/kickstart.service imageroot/systemd/user/${modulename}.service
+   git mv tests/kickstart.robot tests/${modulename}.robot
+   sed -i "s/kickstart/${modulename}/g" $(find .github/ * -type f)
+   git commit -a -m "Repository initialization"
+   ```
 
 1. Edit this `README.md` file, by replacing this section with your module
    description
