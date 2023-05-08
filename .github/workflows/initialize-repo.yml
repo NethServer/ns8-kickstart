@@ -7,6 +7,9 @@ name: "Repository initialization"
 on:
   push:
 
+permissions:
+  contents: write
+
 jobs:
   initrepo:
     runs-on: ubuntu-latest
