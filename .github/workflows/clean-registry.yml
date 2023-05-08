@@ -4,6 +4,9 @@ on:
   delete:
   workflow_dispatch:
 
+permissions:
+  packages: write
+
 jobs:
   delete_images:
     name: "Delete ghcr.io images ${{ github.event.ref }}"
