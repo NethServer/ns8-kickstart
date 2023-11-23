@@ -1,1 +1,57 @@
-{}
+{
+    "error": {
+        "403": "Operación no autorizada",
+        "cannot_retrieve_installed_modules": "No es posible recibir los módulos instalados",
+        "401": "Autenticación no válida",
+        "cannot_retrieve_module_info": "No es posible recibir la información del módulo",
+        "generic_error": "Algo ha salido mal",
+        "error": "Error",
+        "network_timeout": "Tiempo de espera de red agotado",
+        "404": "Recurso no encontrado",
+        "network_error": "Error de red",
+        "validation_error": "Error de validación"
+    },
+    "settings": {
+        "test_field": "Campo de prueba",
+        "configure_instance": "Configurar {instance}",
+        "save": "Guardar",
+        "title": "Ajustes"
+    },
+    "common": {
+        "required": "Requerido",
+        "work_in_progress": "Trabajo en progreso",
+        "processing": "Procesando..."
+    },
+    "status": {
+        "created": "Creado",
+        "size": "Tamaño",
+        "name": "Nombre",
+        "no_images": "No hay imágenes",
+        "app_volumes": "Volúmen de App | Volúmenes de App",
+        "services": "Servicio | Servicios",
+        "app_images": "Imagen de App | Imágenes de App",
+        "no_services": "No hay servicios",
+        "app_instance": "Instancia de aplicación",
+        "mount": "Montar",
+        "title": "Estado",
+        "installation_node": "Nodo de instalación",
+        "node": "Nodo",
+        "no_volumes": "No hay volúmenes"
+    },
+    "about": {
+        "title": "Acerca de"
+    },
+    "action": {
+        "list-backup-repositories": "Listar repositorios de backup",
+        "get-module-info": "Obtener información del módulo",
+        "list-installed-modules": "Listar módulos instalados",
+        "list-backups": "Listar backups",
+        "get-status": "Obtener estado",
+        "configure-module": "Configurar módulo",
+        "get-configuration": "Obtener configuración",
+        "get-name": "Obtener nombre"
+    },
+    "task": {
+        "cannot_create_task": "No se puede crear la tarea {action}"
+    }
+}
