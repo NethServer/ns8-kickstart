@@ -23,20 +23,20 @@
         "processing": "Procesando..."
     },
     "status": {
-        "created": "Creado",
+        "created": "Creada",
         "size": "Tamaño",
         "name": "Nombre",
-        "no_images": "No hay imágenes",
-        "app_volumes": "Volúmen de App | Volúmenes de App",
+        "no_images": "Sin imágenes",
+        "app_volumes": "Volumen de la aplicación | Volúmenes de la aplicación",
         "services": "Servicio | Servicios",
-        "app_images": "Imagen de App | Imágenes de App",
-        "no_services": "No hay servicios",
-        "app_instance": "Instancia de aplicación",
+        "app_images": "Imagen de la aplicación | Imágenes de las aplicaciones",
+        "no_services": "Sin servicios",
+        "app_instance": "Instancia de la aplicación",
         "mount": "Montar",
         "title": "Estado",
-        "installation_node": "Nodo de instalación",
+        "installation_node": "Nodo de la instalación",
         "node": "Nodo",
-        "no_volumes": "No hay volúmenes"
+        "no_volumes": "Sin volúmenes"
     },
     "about": {
         "title": "Acerca de"
@@ -46,7 +46,7 @@
         "get-module-info": "Obtener información del módulo",
         "list-installed-modules": "Listar módulos instalados",
         "list-backups": "Listar backups",
-        "get-status": "Obtener estado",
+        "get-status": "Obtener el estado",
         "configure-module": "Configurar módulo",
         "get-configuration": "Obtener configuración",
         "get-name": "Obtener nombre"
