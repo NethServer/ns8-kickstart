@@ -1,6 +1,6 @@
 {
     "error": {
-        "403": "Operación no autorizada",
+        "403": "Operation not authorized",
         "cannot_retrieve_installed_modules": "No es posible recibir los módulos instalados",
         "401": "Autenticación no válida",
         "cannot_retrieve_module_info": "No es posible recibir la información del módulo",
@@ -18,14 +18,14 @@
         "title": "Ajustes"
     },
     "common": {
-        "required": "Obligatorio",
+        "required": "Required",
         "work_in_progress": "Trabajo en curso",
         "processing": "Procesando..."
     },
     "status": {
-        "created": "Creado",
-        "size": "Tamaño",
-        "name": "Nombre",
+        "created": "Created",
+        "size": "Size",
+        "name": "Name",
         "no_images": "No hay imágenes",
         "app_volumes": "Volúmen de aplicación | Volúmenes de aplicaciones",
         "services": "Servicio | Servicios",
