@@ -1,1 +1,12 @@
-{}
+{
+    "common": {
+        "required": "Obrigatório",
+        "work_in_progress": "Em progresso",
+        "processing": "Procesando..."
+    },
+    "status": {
+        "services": "Serviço | Serviços",
+        "app_instance": "Instância do aplicativo",
+        "title": "Estado"
+    }
+}
