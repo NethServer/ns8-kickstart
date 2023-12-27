@@ -13,9 +13,9 @@
     },
     "settings": {
         "test_field": "Campo de prueba",
-        "configure_instance": "Configurar {instance}",
-        "save": "Guardar",
-        "title": "Ajustes"
+        "configure_instance": "Configure {instance}",
+        "save": "Save",
+        "title": "Settings"
     },
     "common": {
         "required": "Obligatorio",
@@ -39,7 +39,7 @@
         "no_volumes": "Sin volúmenes"
     },
     "about": {
-        "title": "Acerca de"
+        "title": "About"
     },
     "action": {
         "list-backup-repositories": "Lista de repositorios de copia de seguridad",
@@ -52,6 +52,6 @@
         "get-name": "Obtener el nombre"
     },
     "task": {
-        "cannot_create_task": "No se puede crear la tarea {action}"
+        "cannot_create_task": "Cannot create task {action}"
     }
 }
