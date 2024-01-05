@@ -1,32 +1,21 @@
 #!/usr/bin/env python3
 
 #
-# Copyright (C) 2022 Nethesis S.r.l.
+# Copyright (C) 2023 Nethesis S.r.l.
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
-import os
 import sys
+import json
 import agent
-import agent.tasks
+import os
 
-# Find default traefik instance for current node
-default_traefik_id = agent.resolve_agent_id('traefik@node')
-if default_traefik_id is None:
-    sys.exit(2)
+request = json.load(sys.stdin)
+renv = request['environment']
 
-# Configure traefik virtual host
-response = agent.tasks.run(
-    agent_id=default_traefik_id,
-    action='set-route',
-    data={
-        'instance': os.environ['MODULE_ID'],
-        'url': f'http://127.0.0.1:{os.environ["TCP_PORT"]}',
-        'host': os.environ["TRAEFIK_HOST"],
-        'lets_encrypt': os.environ["TRAEFIK_LETS_ENCRYPT"] == True,
-        'http2https': os.environ["TRAEFIK_HTTP2HTTPS"] == True
-    },
-)
-
-# Check if traefik configuration has been successfull
-agent.assert_exp(response['exit_code'] == 0)
+configure_retval = agent.tasks.run(agent_id=os.environ['AGENT_ID'], action='configure-module', data={
+    "lets_encrypt": renv["TRAEFIK_LETS_ENCRYPT"],
+    "host": renv["TRAEFIK_HOST"],
+    "http2https": renv["TRAEFIK_HTTP2HTTPS"],
+})
+agent.assert_exp(configure_retval['exit_code'] == 0, "The configure-module subtask failed!")
