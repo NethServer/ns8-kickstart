@@ -24,7 +24,14 @@
     "title": "Settings",
     "configure_instance": "Configure {instance}",
     "save": "Save",
-    "test_field": "Test field"
+    "kickstart_fqdn": "kickstart hostname (FQDN)",
+    "lets_encrypt": "Request LE Certificate",
+    "http_to_https": "Force HTTPS",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "advanced": "Advanced",
+    "configuring": "Configuring",
+    "instance_configuration": "Configure kickstart"
   },
   "about": {
     "title": "About"
