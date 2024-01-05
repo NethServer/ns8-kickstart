@@ -31,7 +31,8 @@
     "disabled": "Disabled",
     "advanced": "Advanced",
     "configuring": "Configuring",
-    "instance_configuration": "Configure kickstart"
+    "instance_configuration": "Configure kickstart",
+    "domain_already_used_in_traefik": "Domain already used in traefik"
   },
   "about": {
     "title": "About"
