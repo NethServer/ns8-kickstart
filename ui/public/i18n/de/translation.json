@@ -1,57 +1,57 @@
 {
     "error": {
-        "403": "Vorgang nicht erlaubt",
-        "cannot_retrieve_installed_modules": "Installierte Module können nicht abgerufen werden",
-        "401": "ungültige Authentisierung",
-        "cannot_retrieve_module_info": "Modulinformationen können nicht abgerufen werden",
-        "generic_error": "Etwas ist fehl gelaufen",
-        "error": "Fehler",
-        "network_timeout": "Zeitüberschreitung im Netzwerk",
-        "404": "Ressource nicht gefunden",
-        "network_error": "Netzwerkfehler",
-        "validation_error": "Überprüfungsfehler"
+        "403": "Operation not authorized",
+        "cannot_retrieve_installed_modules": "Cannot retrieve installed modules",
+        "401": "Invalid authentication",
+        "cannot_retrieve_module_info": "Cannot retrieve module info",
+        "generic_error": "Something went wrong",
+        "error": "Error",
+        "network_timeout": "Network timeout",
+        "404": "Resource not found",
+        "network_error": "Network error",
+        "validation_error": "Validation error"
     },
     "settings": {
         "test_field": "Testfeld",
         "configure_instance": "{instance} konfigurieren",
-        "save": "speichern",
-        "title": "Einstellungen"
+        "save": "Save",
+        "title": "Settings"
     },
     "common": {
-        "required": "erforderlich",
-        "work_in_progress": "in Arbeit",
-        "processing": "verarbeite..."
+        "required": "Required",
+        "work_in_progress": "Work in progress",
+        "processing": "Processing..."
     },
     "status": {
-        "created": "erstellt",
-        "size": "Größe",
+        "created": "Created",
+        "size": "Size",
         "name": "Name",
-        "no_images": "keine Abbilder",
-        "app_volumes": "App Laufwerk | App Laufwerke",
-        "services": "Dienst | Dienste",
-        "app_images": "App image | App imagesApp image | App images",
-        "no_services": "kein Dienst",
-        "app_instance": "App-Instanz",
-        "mount": "Einbindung",
+        "no_images": "No images",
+        "app_volumes": "App volume | App volumes",
+        "services": "Service | Services",
+        "app_images": "App image | App images",
+        "no_services": "No services",
+        "app_instance": "App instance",
+        "mount": "Mount",
         "title": "Status",
-        "installation_node": "Installationsknoten",
-        "node": "Knoten",
-        "no_volumes": "Keine Laufwerke"
+        "installation_node": "Installation node",
+        "node": "Node",
+        "no_volumes": "No volumes"
     },
     "about": {
-        "title": "Über"
+        "title": "About"
     },
     "action": {
-        "list-backup-repositories": "Datensicherungen-Ziele auflisten",
-        "get-module-info": "Modulinformationen abrufen",
-        "list-installed-modules": "installierte Module auflisten",
-        "list-backups": "Datensicherungen auflisten",
-        "get-status": "Status ermitteln",
-        "configure-module": "Modul konfigurieren",
-        "get-configuration": "Konfiguration abrufen",
-        "get-name": "Name abrufen"
+        "list-backup-repositories": "List backup repositories",
+        "get-module-info": "Get module info",
+        "list-installed-modules": "List installed modules",
+        "list-backups": "List backups",
+        "get-status": "Get status",
+        "configure-module": "Configure module",
+        "get-configuration": "Get configuration",
+        "get-name": "Get name"
     },
     "task": {
-        "cannot_create_task": "Aufgabe kann nicht erstellt werden {action}"
+        "cannot_create_task": "Cannot create task {action}"
     }
 }
