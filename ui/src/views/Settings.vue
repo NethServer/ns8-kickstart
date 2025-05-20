@@ -187,12 +187,20 @@ export default {
     },
     configureModuleValidationFailed(validationErrors) {
       this.loading.configureModule = false;
+      let focusAlreadySet = false;
 
       for (const validationError of validationErrors) {
-        const param = validationError.parameter;
+        const field = validationError.field;
 
-        // set i18n error message
-        this.error[param] = this.$t("settings." + validationError.error);
+        if (field !== "(root)") {
+          // set i18n error message
+          this.error[field] = this.$t("settings." + validationError.error);
+
+          if (!focusAlreadySet) {
+            this.focusElement(field);
+            focusAlreadySet = true;
+          }
+        }
       }
     },
     async configureModule() {
