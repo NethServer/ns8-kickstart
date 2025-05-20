@@ -94,6 +94,7 @@ export default {
         getConfiguration: "",
         configureModule: "",
         testField: "", // TODO remove
+        // TODO add all validation error fields
       },
     };
   },
