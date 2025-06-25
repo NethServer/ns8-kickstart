@@ -943,6 +943,11 @@
     winston "^3.3.3"
     yargs "^16.1.1"
 
+"@carbon/telemetry@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@carbon/telemetry/-/telemetry-0.1.0.tgz#57b331cd5a855b4abbf55457456da8211624d879"
+  integrity sha512-kNWt0bkgPwGW0i5h7HFuljbKRXPvIhsKbB+1tEURAYLXoJg9iJLF1eGvWN5iVoFCS2zje4GR3OGOsvvKVe7Hlg==
+
 "@carbon/vue@^2.40.0":
   version "2.40.0"
   resolved "https://registry.npmjs.org/@carbon/vue/-/vue-2.40.0.tgz"
@@ -2495,12 +2500,12 @@ carbon-components@10.30.0:
     lodash.debounce "^4.0.8"
     warning "^3.0.0"
 
-carbon-components@^10.41.0:
-  version "10.46.0"
-  resolved "https://registry.npmjs.org/carbon-components/-/carbon-components-10.46.0.tgz"
-  integrity sha512-BWO1d/CBGZgyMjGN+nOkjqlfRek56/uFpyKMs443IeaJGvhZ0r7SFC5aeipxlg/BCwhxl5dcruzQ9d0MykNxSw==
+carbon-components@^10.59.2:
+  version "10.59.2"
+  resolved "https://registry.yarnpkg.com/carbon-components/-/carbon-components-10.59.2.tgz#9d4400871d9d809dd901f57f3571dbf5920277b9"
+  integrity sha512-apaSI8ce+0IV6BrMSH51yBO/CaeDLjQkBckH/l11X7euNvl58falGcw1S715T4jW5qjpxYcrXAjKVtZHagx2SA==
   dependencies:
-    "@carbon/telemetry" "0.0.0-alpha.6"
+    "@carbon/telemetry" "0.1.0"
     flatpickr "4.6.1"
     lodash.debounce "^4.0.8"
     warning "^3.0.0"
