@@ -1,0 +1,34 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "local>NethServer/.github:renovate-config",
+        ":disableDependencyDashboard"
+    ],
+    "branchPrefix": "renovate-",
+    "branchNameStrict": true,
+    "ignorePaths": [
+        "**/ui/**"
+    ],
+    "customManagers": [
+        {
+            "customType": "regex",
+            "fileMatch": [
+                "(^|/)test-module\\.sh$",
+                "(^|/)build-images?\\.sh$"
+            ],
+            "matchStrings": [
+                "docker\\.io\\/(?:library\\/)?(?<depName>[-0-9a-z_\\/.]+):(?<currentValue>[-0-9a-zA-Z_.]+)",
+                "(?<depName>(?:ghcr|quay)\\.io\\/[-0-9a-z_\\/.]+):(?<currentValue>[-0-9a-zA-Z_.]+)"
+            ],
+            "datasourceTemplate": "docker"
+        }
+    ],
+    "packageRules": [
+        {
+            "matchPackageNames": [
+                "node"
+            ],
+            "allowedVersions": "<=18"
+        }
+    ]
+}
