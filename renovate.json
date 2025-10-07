@@ -4,6 +4,7 @@
         "local>NethServer/.github:renovate-config",
         ":disableDependencyDashboard"
     ],
+    "forkProcessing": "enabled",
     "branchPrefix": "renovate-",
     "branchNameStrict": true,
     "ignorePaths": [
