@@ -1,35 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "local>NethServer/.github:renovate-config",
-    ":disableDependencyDashboard"
-  ],
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "ignoreDeps": ["vue"]
-  },
-  "osvVulnerabilityAlerts": true,
-  "branchPrefix": "renovate-",
-  "branchNameStrict": true,
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["(^|/)test-module\\.sh$", "(^|/)build-images?\\.sh$"],
-      "matchStrings": [
-        "docker\\.io\\/(?:library\\/)?(?<depName>[-0-9a-z_\\/.]+):(?<currentValue>[-0-9a-zA-Z_.]+)",
-        "(?<depName>(?:ghcr|quay)\\.io\\/[-0-9a-z_\\/.]+):(?<currentValue>[-0-9a-zA-Z_.]+)"
-      ],
-      "datasourceTemplate": "docker"
-    }
-  ],
-  "packageRules": [
-    {
-      "matchPackageNames": ["node", "mcr.microsoft.com/devcontainers/javascript-node"],
-      "allowedVersions": "<=18"
-    },
-    {
-      "matchDatasources": ["npm"],
-      "enabled": false
-    }
-  ]
+  "extends": ["local>NethServer/.github:ns8"]
 }
