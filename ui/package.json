@@ -16,7 +16,7 @@
     "await-to-js": "^3.0.0",
     "axios": "^1.11.0",
     "carbon-components": "^10.41.0",
-    "core-js": "^3.6.5",
+    "core-js": "^3.46.0",
     "lottie-web-vue": "^1.2.0",
     "sass": "^1.34.1",
     "vue": "^2.6.11",
