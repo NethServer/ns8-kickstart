@@ -15,7 +15,7 @@ To start a new module from it:
    modulename=$(basename $(pwd) | sed 's/^ns8-//')
    git mv imageroot/systemd/user/kickstart.service imageroot/systemd/user/${modulename}.service
    git mv tests/kickstart.robot tests/${modulename}.robot
-   sed -i "s/kickstart/${modulename}/g" $(find .github/ * -type f)
+   sed -i "s/kickstart/${modulename}/g" $(find .github/ .devcontainer/ * -type f)
    git commit -a -m "Repository initialization"
    ```
 
