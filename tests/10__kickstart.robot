@@ -7,7 +7,7 @@ Check if kickstart is installed correctly
     ...    return_rc=True
     Should Be Equal As Integers    ${rc}  0
     &{output} =    Evaluate    ${output}
-    Set Suite Variable    ${module_id}    ${output.module_id}
+    Set Global Variable    ${module_id}    ${output.module_id}
 
 Check if kickstart can be configured
     ${rc} =    Execute Command    api-cli run module/${module_id}/configure-module --data '{}'
