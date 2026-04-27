@@ -32,11 +32,11 @@ Take screenshots
     Go To    https://${NODE_ADDR}/cluster-admin/#/apps/${module_id}
     Wait For Elements State    iframe >>> h2 >> text="Status"    visible    timeout=10s
     Sleep    5s
-    Take Screenshot    filename=${OUTPUT_DIR}/browser/screenshot/1._Status.png
+    Take Screenshot    filename=${OUTPUT DIR}/browser/screenshot/1._Status.png
     Go To    https://${NODE_ADDR}/cluster-admin/#/apps/${module_id}?page=settings
     Wait For Elements State    iframe >>> h2 >> text="Settings"    visible    timeout=10s
     Sleep    5s
-    Take Screenshot    filename=${OUTPUT_DIR}/browser/screenshot/2._Settings.png
+    Take Screenshot    filename=${OUTPUT DIR}/browser/screenshot/2._Settings.png
     Close Browser
 
 Check if kickstart can be configured
