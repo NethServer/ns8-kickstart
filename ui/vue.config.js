@@ -19,4 +19,19 @@ module.exports = {
         return options;
       });
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        sassOptions: {
+          silenceDeprecations: [
+            "import",
+            "global-builtin",
+            "color-functions",
+            "if-function",
+            "legacy-js-api",
+          ],
+        },
+      },
+    },
+  },
 };
