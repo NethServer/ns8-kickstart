@@ -1,5 +1,7 @@
 module.exports = {
   publicPath: "./",
+  // added to fix the build of https://github.com/NethServer/ns8-kickstart/pull/114
+  transpileDependencies: ["axios"],
   configureWebpack: {
     optimization: {
       splitChunks: {
