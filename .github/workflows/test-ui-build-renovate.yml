@@ -19,16 +19,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: "24"
           cache: "yarn"
           cache-dependency-path: "ui/yarn.lock"
-
-      - name: Set Yarn to v1 Classic
-        run: yarn set version classic
-        working-directory: ./ui
 
       - name: Check Node Version
         run: node --version
@@ -39,7 +38,7 @@ jobs:
         working-directory: ./ui
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
         working-directory: ./ui
 
       - name: Build application
