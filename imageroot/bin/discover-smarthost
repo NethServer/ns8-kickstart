@@ -14,11 +14,7 @@ import os
 rdb = agent.redis_connect(use_replica=True)
 smtp_settings = agent.get_smarthost_settings(rdb)
 
-envfile = "smarthost.env"
-
-# Using .tmp suffix: do not overwrite the target file until the new one is
-# saved to disk:
-with open(envfile + ".tmp", "w") as efp:
+with agent.safe_open("smarthost.env", "w") as efp:
     # HINT for kickstart: adjust variable names as needed
     print(f"SMTP_ENABLED={'1' if smtp_settings['enabled'] else ''}", file=efp)
     print(f"SMTP_HOST={smtp_settings['host']}", file=efp)
@@ -27,9 +23,6 @@ with open(envfile + ".tmp", "w") as efp:
     print(f"SMTP_PASSWORD={smtp_settings['password']}", file=efp)
     print(f"SMTP_ENCRYPTION={smtp_settings['encrypt_smtp']}", file=efp)
     print(f"SMTP_TLSVERIFY={'1' if smtp_settings['tls_verify'] else ''}", file=efp)
-
-# Commit changes by replacing the existing envfile:
-os.replace(envfile + ".tmp", envfile)
 
 # NOTE: The generated envfile can be included in the service container
 #       with `podman run --env-file` or in Systemd unit with
