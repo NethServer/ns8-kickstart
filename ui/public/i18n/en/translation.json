@@ -6,10 +6,10 @@
     },
     "status": {
         "title": "Status",
-        "app_instance": "App instance",
+        "app_instance": "Application",
         "services": "Service | Services",
-        "app_images": "App image | App images",
-        "app_volumes": "App volume | App volumes",
+        "app_images": "Application image | Application images",
+        "app_volumes": "Application volume | Application volumes",
         "installation_node": "Installation node",
         "node": "Node",
         "name": "Name",
