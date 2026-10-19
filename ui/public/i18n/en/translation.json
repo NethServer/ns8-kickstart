@@ -6,7 +6,7 @@
     },
     "status": {
         "title": "Status",
-        "app_instance": "Application",
+        "app_instance": "Application instance",
         "services": "Service | Services",
         "app_images": "Application image | Application images",
         "app_volumes": "Application volume | Application volumes",
