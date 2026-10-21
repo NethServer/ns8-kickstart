@@ -90,6 +90,10 @@ To uninstall the instance:
 
 This module uses the NS8 standard testing infrastructure. For instructions on how to run the test suite locally, refer to the [Running tests locally](https://github.com/NethServer/ns8-github-actions/blob/v1/README.md#running-tests-locally) section of the ns8-github-actions README.
 
+## Repository guidance
+
+Use [AGENTS.md](AGENTS.md) for repository-specific agent instructions and [STRUCTURE.md](STRUCTURE.md) for a compact map of the module layout.
+
 ## UI translation
 
 Translated with [Weblate](https://hosted.weblate.org/projects/ns8/).
