@@ -14,13 +14,15 @@ jobs:
 
     env:
       NODE_OPTIONS: --openssl-legacy-provider
+      # renovate: datasource=npm packageName=corepack
+      COREPACK_VERSION: 0.36.0
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
 
       - name: Enable Corepack
-        run: corepack enable
+        run: npm install -g corepack@${COREPACK_VERSION} && corepack enable
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
