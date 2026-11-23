@@ -7,13 +7,8 @@ Instructions for AI coding agents working on this NethServer 8 module.
 General NethServer conventions live in the agent skills of the
 [NethServer/agents](https://github.com/NethServer/agents) repository:
 module layout, actions and events, backup and restore, UI, Containerfiles,
-commits, pull requests and releases. Install them in your agent as its
-README explains. For example, in Claude Code:
-
-```
-/plugin marketplace add NethServer/agents
-/plugin install nethserver-skills@nethserver
-```
+commits, pull requests and releases. Install them in your agent as that
+repository's README explains.
 
 Load the matching skill before you start a task, for example
 `nethserver-ns8-module` to change the module code, or `nethserver-admin`
